@@ -13,6 +13,11 @@ class Goblin:
         """Return a random amount of damage."""
         return random.randint(1, self.attack_power)
 
+    def focus(self):
+        """Increases goblin damage, returns nothing"""
+        self.attack_power += 5
+        print(f"{self.name} is focusing!")
+
     def take_damage(self, damage):
         """Reduce health without allowing it to fall below zero."""
         self.health = max(0, self.health - damage)
