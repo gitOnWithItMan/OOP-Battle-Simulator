@@ -8,14 +8,14 @@ ENEMIES_DEFEATED = 0
 
 def battle(hero: Hero, enemy: Goblin):
     while hero.is_alive() and enemy.is_alive():
-        hero_damage = hero.attack()
+        hero_damage = hero.random_attack()
         enemy.take_damage(hero_damage)
         if enemy.is_alive():
-            enemy_damage = enemy.attack()
+            enemy.is_blocking = False
+            enemy_damage = enemy.random_attack()
             hero.take_damage(enemy_damage)
 
         hero.mana_power = min(10, hero.mana_power + 1)
-        enemy.is_blocking = False
 
     if hero.is_alive():
         print(f"{hero.name} wins!")

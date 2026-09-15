@@ -11,16 +11,19 @@ class Hero:
         self.mana_power = 10
         self.mana_max = 10
         self.fireball_attack = 10
+        self.attack_list = [self.attack, self.slam, self.fireball]
         
 
     def attack(self):
         """return damage from hero"""
+        print(f"{self.name} uses attack!")
         return random.randint(1, self.attack_power)
 
     def slam(self):
+        print(f"{self.name} uses slam!")
         """less probable attack, returns damage (float)"""
         if random.randint(1,3) == 1:
-            return self.attack() * 2.5
+            return self.attack() * 4
         return 0
 
     def take_damage(self, damage):
@@ -33,6 +36,15 @@ class Hero:
 
     def fireball(self):
         """Magic attack, uses mana, returns damage"""
-        self.mana_power -= 4
-        return self.fireball_attack
+        print(f"{self.name} uses fireball!")
+        if self.mana_power >= 4:
+            self.mana_power -= 4
+            return self.fireball_attack
+        print("But it failed!")
+        return 0
+
+    
+    def random_attack(self):
+        return self.attack_list[random.randint(1, len(self.attack_list)-1)]()
+
 
