@@ -8,6 +8,7 @@ class Goblin:
         self.name = name
         self.health = 100
         self.attack_power = 15
+        self.is_blocking = False
 
     def attack(self):
         """Return a random amount of damage."""
@@ -26,3 +27,7 @@ class Goblin:
     def is_alive(self):
         """Return True while the goblin has health remaining."""
         return self.health > 0
+
+    def block(self):
+        """Cannot take damage this round, returns nothing"""
+        self.is_blocking = True
